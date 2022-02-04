@@ -1,9 +1,28 @@
+@import url(styles/router.css);
+@import url(styles/logo.css);
 html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #eeeeee;
+}
+
+#__next {
+  height: 100%;
+}
+
+.main-container {
+  height: 100%;
+  max-width: 60%;
+  margin: auto;
+  background-color: #f7f7f7;
+}
+
+.main-content {
+  padding: 20px;
 }
 
 a {
@@ -14,3 +33,6 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+

@@ -1,13 +1,13 @@
 
-export class localStorageService {
+export default class LocalStorageUtils {
     constructor() {
     }
 
-    getItem(key: string) {
+    static getItem(key: string) {
         return localStorage.getItem(key)
     }
 
-    setItem(key: string, value: any) {
+    static setItem(key: string, value: any) {
         localStorage.setItem(key, value)
     }
 }

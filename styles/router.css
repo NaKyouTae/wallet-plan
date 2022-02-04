@@ -1,0 +1,17 @@
+.dynamic-router {
+    width: 100%;
+}
+
+
+.dynamic-router > a {
+    display: inline-block;
+    text-align: center;
+    width: calc(100% / 2);
+    padding: 10px 20px;
+    background-color: #f9f3f3;
+}
+
+.dynamic-router > a:hover {
+    background-color: #ffe3e3;
+    cursor: pointer;
+}
