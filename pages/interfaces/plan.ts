@@ -3,23 +3,22 @@ export interface Plan {
 }
 
 export interface YearItem {
-    year: number,
+    id: string,
+    year: string,
     months: Array<MonthItem>
 }
 
 export interface MonthItem {
-    year: number,
-    month: number,
+    id: string,
+    year: string,
+    month: string,
+    salary: number,
+    used: number,
     plans: Array<PlanItem>,
 }
 
-export interface Bank {
-    account: string
-    bankName: string
-    bankNicName?: string
-}
-
 export interface PlanItem {
+    id: string,
     bank: Bank,
     totalAmount: number,
     amounts: Array<number>,
@@ -27,4 +26,10 @@ export interface PlanItem {
     paymentMonth: Array<string>,
     paid: Array<boolean>,
     remark: string
+}
+
+export interface Bank {
+    account: string
+    bankName: string
+    bankNicName?: string
 }
