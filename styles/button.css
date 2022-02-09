@@ -1,0 +1,22 @@
+button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f7e2f7;
+    padding: 10px;
+}
+
+button:hover {
+    background-color: #ffe3e3;
+}
+
+.plan_table_btn_area {
+    padding: 10px;
+    text-align: right;
+}
+
+.modal_inner_btn_area {
+    padding: 10px;
+    text-align: right;
+    border-bottom: 1px solid darkgray;
+}

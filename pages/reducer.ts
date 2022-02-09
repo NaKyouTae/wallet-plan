@@ -1,8 +1,9 @@
 import {combineReducers} from "redux";
-import planTabReducer from "./features/plan/plan-tab/plan-tab.reducer";
+import planTabReducer from "./common/features/plan/plan-tab/plan-tab.reducer";
 
 const rootReducer = combineReducers({
-    planTabs: planTabReducer,
+    plan: planTabReducer,
+    // chart:
 })
 
 export default rootReducer

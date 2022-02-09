@@ -1,7 +1,8 @@
 import '../styles/globals.css'
 import type {AppProps} from 'next/app'
 import {useRouter} from "next/router";
-import {RoutesModel} from "./models/routes.model";
+import {RoutesModel} from "./common/models/routes.model";
+import Portal from "./common/components/modal/common-portal";
 
 function MyApp({Component, pageProps}: AppProps) {
     const router = useRouter()
@@ -20,6 +21,7 @@ function MyApp({Component, pageProps}: AppProps) {
                 <Component />
             </div>
         </div>
+
     )
 }
 

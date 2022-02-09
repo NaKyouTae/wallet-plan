@@ -1,0 +1,57 @@
+.portal_container {
+    z-index: 999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid darkgray;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 20px 20px darkgrey;
+    padding: 10px;
+}
+
+.portal_container_header {
+    border-bottom: 1px solid darkgray;
+    height: 40px;
+    text-align: center;
+}
+
+.portal_container_header > div {
+    display: inline-block;
+    height: 100%;
+}
+
+.portal_container_header_title {
+    width: 90%;
+}
+
+.portal_container_header_title > div {
+    height: 100%;
+    padding: 5px 0px;
+}
+
+.portal_container_header_title > div:first-child {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.portal_container_header_button {
+    width: 10%;
+    text-align: right;
+    padding: 0px 10px;
+}
+
+.portal_container_header_button > span:hover {
+    cursor: pointer;
+}
+
+.portal_container_body{
+    padding: 10px;
+}
+.portal_container_footer{
+    border-top: 1px solid darkgray;
+    height: 50px;
+    padding: 10px;
+    text-align: right;
+}

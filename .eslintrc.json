@@ -42,6 +42,9 @@
     "no-use-before-define": 0,
     "react/prop-types": 0,
     "default-param-last": 0,
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "@ts-ignore": 0,
     "semi": 0
   },
   "settings": {

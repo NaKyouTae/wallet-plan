@@ -1,0 +1,17 @@
+input {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 8px 0 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.input-area > label {
+    display: block;
+    color: #787474;
+}
+.input-area > input {
+    display: block;
+}
