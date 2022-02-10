@@ -26,6 +26,7 @@ export interface MonthItem {
 export interface PlanItem {
     id: string,
     userId: string
+    yearId: string
     monthId: string
     bank: Bank,
     totalAmount: number,

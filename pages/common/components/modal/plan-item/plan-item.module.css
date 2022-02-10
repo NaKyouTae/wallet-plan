@@ -1,0 +1,50 @@
+.individual_used_col {
+    display: inline-block;
+}
+
+.each_plan_container {
+    border-bottom: 1px solid darkgray;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.each_plan_container_body {
+    height: 300px;
+    overflow: auto;
+}
+.col_each_cmd {
+    width: 10%;
+    text-align: center;
+}
+.col_each_amount {
+    width: 20%;
+}
+.col_used_place {
+    width: 40%;
+}
+.col_pay_month {
+    width: 15%;
+}
+.col_paid {
+    width: 15%;
+}
+
+.individual_used_col > div {
+    display: inline-block;
+}
+
+.individual_used_row {
+    height: 40px;
+}
+
+.individual_used_title_row {
+    border-bottom: 1px solid darkgray;
+    margin-bottom: 10px;
+}
+
+.individual_used_title {
+    text-align: center;
+    font-width: bold;
+    font-size: 17px;
+    margin: 10px 0px;
+}

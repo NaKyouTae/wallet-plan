@@ -46,7 +46,10 @@ const initialState = {
         // }
     ]
 }
-
+// hooks
+// hydration
+// persist
+// redux hooks form
 export default function planTabReducer(state: Plan = initialState, action: PlanTabAction) {
 
     switch(action.type) {

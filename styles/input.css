@@ -1,6 +1,6 @@
 input {
     box-sizing: border-box;
-    width: 200px;
+    width: 100%;
     padding: 8px 0 8px 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -8,10 +8,32 @@ input {
     font-size: 14px;
 }
 
+.input-area {
+    margin: 5px 0px;
+}
+
 .input-area > label {
     display: block;
+    margin-bottom: 5px;
     color: #787474;
 }
 .input-area > input {
     display: block;
+    width: 100%;
+}
+
+.input-area-2 {
+    width: 100%;
+}
+
+.input-area-2 > div {
+    display: inline-block;
+    width: 50%;
+}
+
+.input-area-2 > div:first-child {
+    padding-right: 10px;
+}
+.input-area-2 > div:last-child {
+    padding-left: 10px;
 }

@@ -10,13 +10,13 @@ button:hover {
     background-color: #ffe3e3;
 }
 
-.plan_table_btn_area {
+.plan-table-btn-area {
     padding: 10px;
     text-align: right;
 }
 
-.modal_inner_btn_area {
-    padding: 10px;
+.modal-inner-btn-area {
+    padding: 0px 10px 10px 10px;
     text-align: right;
     border-bottom: 1px solid darkgray;
 }

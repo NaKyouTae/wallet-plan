@@ -52,6 +52,12 @@ const PlanPage = () => {
     })
     const [planItems, setPlanItems] = useState<Array<PlanItem>>(new Array<PlanItem>(0))
 
+    const [tabModalOn, setTabModalOn] = useState(false)
+    const [selectedTabItem, setSelectedTabItem] = useState({})
+
+    const [planItemModalOn, setPlanItemModalOn] = useState(false)
+    const [selectedPlanItem, setSelectedPlanItem] = useState({})
+
     useEffect(() => {
         const ys = plan?.years
 
@@ -94,11 +100,7 @@ const PlanPage = () => {
         target.style.backgroundColor = "#ffe3e3"
     }
 
-    const [tabModalOn, setTabModalOn] = useState(false)
-    const [selectedTabItem, setSelectedTabItem] = useState({})
 
-    const [planItemModalOn, setPlanItemModalOn] = useState(false)
-    const [selectedPlanItem, setSelectedPlanItem] = useState({})
 
     const createYearTab = () => {
         setTabModalOn(!tabModalOn);
@@ -190,6 +192,11 @@ const PlanPage = () => {
     }
 
     const createPlanItem = (e: any) => {
+        if(selectedYear.id === "" && selectedMonth.id === "") {
+            alert("년도와 월을 선택하세요!")
+            return false
+        }
+
         const updatePlanItems = [ ...planItems]
 
         const planItemId = UuidUtil.getUUID()
@@ -213,9 +220,24 @@ const PlanPage = () => {
         updatePlanItems.push(newPlanItem)
 
         setPlanItems(updatePlanItems)
+
+        const action = {
+            type: PlanItemActionType.PLAN_ITEM_CREATE,
+            payload: {
+                planItemId: updatePlanItems
+            }
+        }
+
+        // @ts-ignore
+        store.dispatch(action)
     }
 
     const updatePlanItem = (planItem: PlanItem) => {
+        if(selectedYear.id === "" && selectedMonth.id === "") {
+            alert("년도와 월을 선택하세요!")
+            return false
+        }
+
         setPlanItemModalOn(!planItemModalOn)
         setSelectedPlanItem({
             actionType: PlanItemActionType.PLAN_ITEM_UPDATE,
@@ -279,7 +301,7 @@ const PlanPage = () => {
                             </div>
                             : null}
                     </div>
-                    <div className="plan_table_btn_area">
+                    <div className="plan-table-btn-area">
                         <button type="button" onClick={(e) => createPlanItem(e)}>ADD</button>
                     </div>
                     <div className={styles.plan_table}>

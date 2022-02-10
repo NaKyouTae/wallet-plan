@@ -9,6 +9,7 @@ function DynamicRouter() {
     return (
         <div>
             {
+                dynamic === "" ? <PlanPage /> :
                 dynamic === "main" ? <PlanPage /> :
                 dynamic === "chart" ? <ChartPage /> : null
             }

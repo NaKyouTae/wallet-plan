@@ -12,7 +12,7 @@ function MyApp({Component, pageProps}: AppProps) {
     return (
         <div className="main-container">
             <div className="logo">Wallet Plan</div>
-            <div className="dynamic-router">
+            <div className="dynamic_router">
                 {routes.map((route, idx) => (
                     <a key={idx} onClick={() => router.push(route.url)} >{route.title}</a>
                 ))}
