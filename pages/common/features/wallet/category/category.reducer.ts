@@ -1,60 +1,58 @@
 import {HYDRATE} from "next-redux-wrapper";
-import {MonthItem, Plan, YearItem} from "../../../interfaces/plan";
-import {PlanTabAction, PlanTabActionType} from "./plan-tab.actions";
+import {Month, Wallet, Year} from "../../../interfaces/wallet";
+import {PlanTabAction, PlanTabActionType} from "./category.actions";
 import UuidUtil from "../../../utils/uuid.util";
 
-const initialState = {
+const initialState: Wallet = {
     id: UuidUtil.getUUID(),
     userId: UuidUtil.getUUID(),
     years : [
-        // {
-        //     id: "",
-        //     userId: "",
-        //     year: "",
-        //     months: [
-        //         {
-        //             id: "",
-        //             userId: "",
-        //             yearId: "",
-        //             year: "",
-        //             month: "",
-        //             salary: 0,
-        //             usedAmount: 0,
-        //             useAbleAmount: 0,
-        //             plans: [
-        //                 {
-        //                     id: "",
-        //                     userId: "",
-        //                     monthId: "",
-        //                     bank: {
-        //                         id: "",
-        //                         planItemId: "",
-        //                         account: "",
-        //                         bankName: "",
-        //                         bankNicName: ""
-        //                     },
-        //                     totalAmount: 0,
-        //                     amounts: 0,
-        //                     usedPlace: [],
-        //                     paymentMonth: [],
-        //                     paid: [],
-        //                     remark: ""
-        //                 }
-        //             ],
-        //         }
-        //     ]
-        // }
+        {
+            id: "",
+            walletId: "",
+            year: "",
+            months: [
+                {
+                    id: "",
+                    yearId: "",
+                    year: "",
+                    month: "",
+                    salary: 0,
+                    usedAmount: 0,
+                    useAbleAmount: 0,
+                    plans: [
+                        {
+                            id: "",
+                            monthId: "",
+                            bank: {
+                                id: "",
+                                planItemId: "",
+                                account: "",
+                                name: "",
+                                nicName: ""
+                            },
+                            totalAmount: 0,
+                            amounts: [],
+                            usedPlace: [],
+                            paymentMonth: [],
+                            paid: [],
+                            remark: ""
+                        }
+                    ],
+                }
+            ]
+        }
     ]
 }
 // hooks
 // hydration
 // persist
 // redux hooks form
-export default function planTabReducer(state: Plan = initialState, action: PlanTabAction) {
+export default function categoryReducer(state: Wallet = initialState, action: PlanTabAction) {
 
     switch(action.type) {
         case PlanTabActionType.YEAR_TAB_CREATE:
-            state.years.push(<YearItem>action.payload.yearItem)
+            state.years.push(<Year>action.payload.yearItem)
 
             return {
                 ...state
@@ -81,7 +79,7 @@ export default function planTabReducer(state: Plan = initialState, action: PlanT
         case PlanTabActionType.MONTH_TAB_CREATE:
             state.years.map((year) => {
                 if (year.id === action.payload.monthItem?.yearId) {
-                    year.months.push(<MonthItem>action.payload.monthItem)
+                    year.months.push(<Month>action.payload.monthItem)
                     return {
                         ...year,
                         months: year.months

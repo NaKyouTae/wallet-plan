@@ -1,32 +1,29 @@
-export interface Plan {
+export interface Wallet {
     id: string
     userId: string
-    years: Array<YearItem>
+    years: Array<Year>
 }
 
-export interface YearItem {
+export interface Year {
     id: string,
-    userId: string
+    walletId: string
     year: string,
-    months: Array<MonthItem>
+    months: Array<Month>
 }
 
-export interface MonthItem {
+export interface Month {
     id: string,
-    userId: string,
     yearId: string,
     year: string,
     month: string,
     salary: number,
     usedAmount: number,
     useAbleAmount: number,
-    plans: Array<PlanItem>,
+    plans: Array<Plan>,
 }
 
-export interface PlanItem {
+export interface Plan {
     id: string,
-    userId: string
-    yearId: string
     monthId: string
     bank: Bank,
     totalAmount: number,
@@ -41,6 +38,6 @@ export interface Bank {
     id: string
     planItemId: string
     account: string
-    bankName: string
-    bankNicName?: string
+    name: string
+    nicName?: string
 }

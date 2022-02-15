@@ -1,17 +1,16 @@
-import {Plan, PlanItem} from "../../../interfaces/plan";
-import {PlanItemAction, PlanItemActionType} from "./plan-item.action";
+import {Wallet, Plan} from "../../../interfaces/wallet";
+import {PlanAction, PlanActionType} from "./plan.action";
 import UuidUtil from "../../../utils/uuid.util";
 
 // const initialState: PlanItem = {
 //     id: "",
-//     userId: "",
 //     monthId: "",
 //     bank: {
 //         id: "",
 //         planItemId: "",
 //         account: "",
-//         bankName: "",
-//         bankNicName: ""
+//         name: "",
+//         nicName: ""
 //     },
 //     totalAmount: 0,
 //     amounts: [],
@@ -27,12 +26,11 @@ const initialState = {
     years : [
         {
             id: "",
-            userId: "",
+            walletId: "",
             year: "",
             months: [
                 {
                     id: "",
-                    userId: "",
                     yearId: "",
                     year: "",
                     month: "",
@@ -42,14 +40,13 @@ const initialState = {
                     plans: [
                         {
                             id: "",
-                            userId: "",
                             monthId: "",
                             bank: {
                                 id: "",
                                 planItemId: "",
                                 account: "",
-                                bankName: "",
-                                bankNicName: ""
+                                name: "",
+                                nicName: ""
                             },
                             totalAmount: 0,
                             amounts: 0,
@@ -65,9 +62,9 @@ const initialState = {
     ]
 }
 
-export default function planItemReducer(state: Plan = initialState, action: PlanItemAction) {
+export default function planReducer(state: Plan = initialState, action: PlanAction) {
     switch (action.type) {
-        case PlanItemActionType.PLAN_ITEM_CREATE:
+        case PlanActionType.PLAN_CREATE:
             state.years.map((year) => {
                 if(year.id === action.payload.planItem?.yearId) {
                     year.months.map((month) => {
@@ -81,7 +78,7 @@ export default function planItemReducer(state: Plan = initialState, action: Plan
             })
 
             return {...state}
-        case PlanItemActionType.PLAN_ITEM_UPDATE:
+        case PlanActionType.PLAN_UPDATE:
             state.years.map((year) => {
                 if(year.id === action.payload.planItem?.yearId) {
                     year.months.map((month) => {
@@ -96,7 +93,7 @@ export default function planItemReducer(state: Plan = initialState, action: Plan
                 }
             })
             return {...state}
-        case PlanItemActionType.PLAN_ITEM_DESTROY:
+        case PlanActionType.PLAN_DESTROY:
             state.years.map((year) => {
                 if(year.id === action.payload.planItem?.yearId) {
                     year.months.map((month) => {

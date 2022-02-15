@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
 
 const chartReducer = combineReducers({
-    // chartTab: planTabReducer
+    // chartTab: categoryReducer
 })
 
 export default chartReducer

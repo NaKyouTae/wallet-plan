@@ -1,17 +1,15 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import ModalUtil from "../../../utils/modal.util";
-import styles from "./plan-item.module.css"
-import {PlanItemActionType} from "../../../features/plan/plan-item/plan-item.action";
-import store from "../../../../store";
-import {Plan} from "../../../interfaces/plan";
+import styles from "./wallet-plan.module.css"
+import {PlanAction, PlanActionType} from "../../../features/wallet/plan/plan.action";
+import store from "../../../../store/store";
+import {Wallet} from "../../../interfaces/wallet";
 
 const PlanItemModal = ({...pageProps}) => {
-    const {plan1, clickType, actionType, data} = pageProps.selectedPlanItem
+    const {plan, clickType, actionType, data} = pageProps.selectedPlanItem
     const [planItem, setPlanItem] = useState(data.planItem)
-    const test = useSelector((state) => {
-        console.log(state)
-    })
+
     useEffect(() => {
         modalBodySizeInit()
     })
@@ -46,8 +44,8 @@ const PlanItemModal = ({...pageProps}) => {
     }
 
     const onSave = (e: any) => {
-        const action = {
-            type: PlanItemActionType.PLAN_ITEM_UPDATE,
+        const action: PlanAction = {
+            type: PlanActionType.PLAN_UPDATE,
             payload: {
                 planItem: data.planItem
             }
@@ -114,7 +112,7 @@ const PlanItemModal = ({...pageProps}) => {
                     </div>
                     <div className={styles.each_plan_container_body}>
                         {
-                            planItem.amounts.map((_, idx) => (
+                            planItem.amounts.map((_: any, idx: string | number) => (
                                 <div className={styles.individual_used_row} key={`pe_${idx}`}>
                                     <div className={`${styles.individual_used_col} ${styles.col_each_cmd}`}>
                                         <span>X</span>

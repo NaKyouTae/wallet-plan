@@ -1,10 +1,10 @@
-import {MonthItem, YearItem} from "../../../interfaces/plan";
+import {Month, Year} from "../../../interfaces/wallet";
 
 export interface PlanTabAction {
     type: PlanTabActionType
     payload: {
-        yearItem?: YearItem
-        monthItem?: MonthItem
+        yearItem?: Year
+        monthItem?: Month
     }
 }
 

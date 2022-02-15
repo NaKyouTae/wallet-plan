@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import PlanPage from "../contents/plan/plan.page";
+import WalletPage from "../contents/wallet/wallet.page";
 import ChartPage from "../contents/chart/chart.page";
 
 function DynamicRouter() {
@@ -9,8 +9,8 @@ function DynamicRouter() {
     return (
         <div>
             {
-                dynamic === "" ? <PlanPage /> :
-                dynamic === "main" ? <PlanPage /> :
+                dynamic === "" ? <WalletPage /> :
+                dynamic === "main" ? <WalletPage /> :
                 dynamic === "chart" ? <ChartPage /> : null
             }
         </div>

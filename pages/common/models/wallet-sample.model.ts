@@ -1,20 +1,20 @@
 import slash from "slash";
-import {Bank, MonthItem, Plan, PlanItem, YearItem} from "../interfaces/plan";
+import {Bank, Month, Wallet, Plan, Year} from "../interfaces/wallet";
 import UuidUtil from "../utils/uuid.util";
 
 const userId = UuidUtil.getUUID()
 
-const getYear = (year: string): YearItem => {
+const getYear = (year: string): Year => {
     const yearId = UuidUtil.getUUID()
     return {
         id: yearId,
-        userId,
+        walletId: userId,
         year,
         months: [getMonth(yearId, year, "10")]
     }
 }
 
-const getMonth = (yearId: string, year: string, month: string): MonthItem => {
+const getMonth = (yearId: string, year: string, month: string): Month => {
     const monthId = UuidUtil.getUUID()
     const plans = [getPlanItem(monthId), getPlanItem(monthId), getPlanItem(monthId)]
     const salary = 1000000
@@ -33,7 +33,7 @@ const getMonth = (yearId: string, year: string, month: string): MonthItem => {
     }
 }
 
-const getPlanItem = (monthId: string): PlanItem => {
+const getPlanItem = (monthId: string): Plan => {
     const planItemId = UuidUtil.getUUID()
     const amounts = [10000, 10000, 20000, 40000]
     const totalAmount = amounts.reduce((acc, value) => acc + value)
@@ -57,11 +57,11 @@ const getBank = (planItemId: string): Bank => {
         id: bankId,
         planItemId,
         account: "12352345-34543-23432",
-        bankName: "TOSS"
+        name: "TOSS"
     }
 }
 
-export const planSample: Plan = {
+export const planSample: Wallet = {
     id: UuidUtil.getUUID(),
     userId: UuidUtil.getUUID(),
     years : [

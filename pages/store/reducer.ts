@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
-import planTabReducer from "./common/features/plan/plan-tab/plan-tab.reducer";
+import walletReducer from "../common/features/wallet/wallet.reducer";
 
 const rootReducer = combineReducers({
-    plan: planTabReducer,
+    wallet: walletReducer,
     // chart:
 })
 

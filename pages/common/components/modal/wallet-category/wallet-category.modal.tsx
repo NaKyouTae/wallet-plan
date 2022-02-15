@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {PlanTabAction} from "../../../features/plan/plan-tab/plan-tab.actions";
+import {PlanTabAction} from "../../../features/wallet/category/category.actions";
 import UuidUtil from "../../../utils/uuid.util";
-import store from "../../../../store";
+import store from "../../../../store/store";
 
-const planTabModal = ({...pageProps}) => {
+const walletCategoryModal = ({...pageProps}) => {
     const {dataType, actionType, clickType, data} = pageProps.selectedTabItem
 
     let prevNextItem = ""
@@ -48,7 +48,7 @@ const planTabModal = ({...pageProps}) => {
             case "year" :
                 action.payload.yearItem = {
                         id: nextId,
-                        userId,
+                        walletId: userId,
                         year: nextItem,
                         months: []
                 }
@@ -117,4 +117,4 @@ const planTabModal = ({...pageProps}) => {
         </div>
     )
 }
-export default planTabModal
+export default walletCategoryModal
