@@ -9,7 +9,7 @@ import styles from "./wallet.module.css"
 
 // utils
 import UuidUtil from "../../common/utils/uuid.util";
-import {PlanTabActionType} from "../../common/features/wallet/category/category.actions";
+import {WalletActionType} from "../../common/features/wallet/item/item.actions";
 
 // components
 import Portal from "../../common/components/modal/common-portal";
@@ -25,11 +25,13 @@ const WalletPage = () => {
 
     const state = store.getState()
 
-    const [plan, setPlan] = useState<Wallet>(state.plan)
+    // @ts-ignore
+    const [wallet, setWallet] = useState<Wallet>(state.wallet)
 
     store.subscribe(() => {
-        setPlan(store.getState().plan)
-        console.log(plan)
+        // @ts-ignore
+        setWallet(store.getState().wallet)
+        console.log(wallet)
     })
 
     // @ts-ignore
@@ -41,7 +43,7 @@ const WalletPage = () => {
     const [selectedTabItem, setSelectedTabItem] = useState({})
 
     useEffect(() => {
-        const ys = plan?.years
+        const ys = wallet?.years
 
         // setYearItems(ys)
 
@@ -86,15 +88,15 @@ const WalletPage = () => {
         setTabModalOn(!tabModalOn);
         setSelectedTabItem({
             dataType: "year",
-            actionType: PlanTabActionType.YEAR_TAB_CREATE,
+            actionType: WalletActionType.YEAR_TAB_CREATE,
             clickType: "create",
-            data: { plan }
+            data: { plan: wallet }
         })
     }
 
     const destroyYearTab = (yearItem: Year) => {
         const action = {
-            type: PlanTabActionType.YEAR_TAB_DESTROY,
+            type: WalletActionType.YEAR_TAB_DESTROY,
             payload: {yearItem}
         }
         store.dispatch(action)
@@ -104,9 +106,9 @@ const WalletPage = () => {
         setTabModalOn(!tabModalOn);
         setSelectedTabItem({
             dataType: "year",
-            actionType: PlanTabActionType.YEAR_TAB_UPDATE,
+            actionType: WalletActionType.YEAR_TAB_UPDATE,
             clickType: "update",
-            data: { plan, yearItem }
+            data: { plan: wallet, yearItem }
         })
     }
 
@@ -119,10 +121,10 @@ const WalletPage = () => {
         setTabModalOn(!tabModalOn);
         setSelectedTabItem({
             dataType: "month",
-            actionType: PlanTabActionType.MONTH_TAB_CREATE,
+            actionType: WalletActionType.MONTH_TAB_CREATE,
             clickType: "create",
             data: {
-                plan,
+                plan: wallet,
                 yearId: selectedYear.id,
                 year: selectedYear.year,
                 monthItems
@@ -139,10 +141,10 @@ const WalletPage = () => {
         setTabModalOn(!tabModalOn);
         setSelectedTabItem({
             dataType: "month",
-            actionType: PlanTabActionType.MONTH_TAB_UPDATE,
+            actionType: WalletActionType.MONTH_TAB_UPDATE,
             clickType: "update",
             data: {
-                plan,
+                plan: wallet,
                 monthItem
             }
         })
@@ -155,7 +157,7 @@ const WalletPage = () => {
         }
 
         const action = {
-            type: PlanTabActionType.MONTH_TAB_DESTROY,
+            type: WalletActionType.MONTH_TAB_DESTROY,
             payload: {monthItem}
         }
         store.dispatch(action)
@@ -166,7 +168,7 @@ const WalletPage = () => {
             <div className={styles.plan_tab_content}>
                 <div className={styles.plan_tab}>
                     {
-                        plan.years.map((year, idx) => (
+                        wallet.years.map((year, idx) => (
                             <div key={idx} onDoubleClick={(e) => updateYearTab(year)} onClick={(e) => yearTabSelected(e, year, year.months)}
                                  style={{backgroundColor: year.year === nowYear ? '#ffe3e3' : ''}}>
                                 <span className={styles.plan_tab_destroy} onClick={(e) => destroyYearTab(year)}>x</span>

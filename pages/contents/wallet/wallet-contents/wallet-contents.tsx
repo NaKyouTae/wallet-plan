@@ -3,17 +3,17 @@ import styles from "../wallet.module.css";
 import store from "../../../store/store";
 import {Month, Wallet, Plan, Year} from "../../../common/interfaces/wallet";
 import UuidUtil from "../../../common/utils/uuid.util";
-import {PlanActionType} from "../../../common/features/wallet/plan/plan.action";
 import PlanItemModal from "../../../common/components/modal/wallet-plan/wallet-plan.modal";
 import Portal from "../../../common/components/modal/common-portal";
+import {WalletActionType} from "../../../common/features/wallet/wallet.action";
 
 const PlanContent = ({...pageProps}) => {
     const state = store.getState()
-    const [plan, setPlan] = useState<Wallet>(state.plan)
+    const [wallet, setWallet] = useState<Wallet>(state.wallet)
 
     store.subscribe(() => {
-        setPlan(store.getState().plan)
-        console.log(plan)
+        setWallet(store.getState().wallet)
+        console.log(wallet)
     })
 
     const [selectedYear, setSelectedYear] = useState<Year>(pageProps.selectedYear)
@@ -23,7 +23,7 @@ const PlanContent = ({...pageProps}) => {
     const [planItemModalOn, setPlanItemModalOn] = useState(false)
 
     useEffect(() => {
-        const ys = plan?.years
+        const ys = wallet?.years
 
         if(ys?.length > 0) {
             const nowYear = new Date().getFullYear().toString()
@@ -58,10 +58,13 @@ const PlanContent = ({...pageProps}) => {
         const planItemId = UuidUtil.getUUID()
         const newPlanItem: Plan = {
             id: planItemId,
+            yearId: selectedYear.id,
             monthId: selectedMonth.id,
             bank: {
                 id: UuidUtil.getUUID(),
-                planItemId,
+                yearId: selectedYear.id,
+                monthId: selectedMonth.id,
+                planId: planItemId,
                 account: "12432534-5324234-12312",
                 name: "TOSS"
             },
@@ -76,7 +79,7 @@ const PlanContent = ({...pageProps}) => {
         updatePlanItems.push(newPlanItem)
 
         const action = {
-            type: PlanActionType.PLAN_CREATE,
+            type: WalletActionType.PLAN_CREATE,
             payload: {
                 planItemId: updatePlanItems
             }
@@ -94,10 +97,10 @@ const PlanContent = ({...pageProps}) => {
 
         setPlanItemModalOn(!planItemModalOn)
         setSelectedModalPlanItem({
-            actionType: PlanActionType.PLAN_UPDATE,
+            actionType: WalletActionType.PLAN_UPDATE,
             clickType: "update",
             data: {
-                plan,
+                plan: wallet,
                 planItem
             }
         })

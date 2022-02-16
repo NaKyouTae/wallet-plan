@@ -5,38 +5,41 @@ export interface Wallet {
 }
 
 export interface Year {
-    id: string,
+    id: string
     walletId: string
-    year: string,
+    year: string
     months: Array<Month>
 }
 
 export interface Month {
-    id: string,
-    yearId: string,
-    year: string,
-    month: string,
-    salary: number,
-    usedAmount: number,
-    useAbleAmount: number,
-    plans: Array<Plan>,
+    id: string
+    yearId: string
+    year: string
+    month: string
+    salary: number
+    usedAmount: number
+    useAbleAmount: number
+    plans: Array<Plan>
 }
 
 export interface Plan {
-    id: string,
+    id: string
+    yearId: string
     monthId: string
-    bank: Bank,
-    totalAmount: number,
-    amounts: Array<number>,
-    usedPlace: Array<string>,
-    paymentMonth: Array<string>,
-    paid: Array<boolean>,
+    bank: Bank
+    totalAmount: number
+    amounts: Array<number>
+    usedPlace: Array<string>
+    paymentMonth: Array<string>
+    paid: Array<boolean>
     remark: string
 }
 
 export interface Bank {
     id: string
-    planItemId: string
+    yearId: string
+    monthId: string
+    planId: string
     account: string
     name: string
     nicName?: string

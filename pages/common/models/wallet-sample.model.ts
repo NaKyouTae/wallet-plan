@@ -22,7 +22,6 @@ const getMonth = (yearId: string, year: string, month: string): Month => {
     const useAbleAmount = salary - usedAmount
     return {
         id: monthId,
-        userId,
         yearId,
         year,
         month,
@@ -39,7 +38,6 @@ const getPlanItem = (monthId: string): Plan => {
     const totalAmount = amounts.reduce((acc, value) => acc + value)
     return {
         id: planItemId,
-        userId,
         monthId,
         bank: getBank(planItemId),
         totalAmount,
@@ -55,7 +53,7 @@ const getBank = (planItemId: string): Bank => {
     const bankId = UuidUtil.getUUID()
     return {
         id: bankId,
-        planItemId,
+        planId: planItemId,
         account: "12352345-34543-23432",
         name: "TOSS"
     }

@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {PlanTabAction} from "../../../features/wallet/category/category.actions";
+import {WalletAction} from "../../../features/wallet/item/item.actions";
 import UuidUtil from "../../../utils/uuid.util";
 import store from "../../../../store/store";
 
@@ -40,7 +40,7 @@ const walletCategoryModal = ({...pageProps}) => {
 
     const onSave = (e: any) => {
         // @ts-ignore
-        const action: PlanTabAction = { type: actionType, payload: {}}
+        const action: WalletAction = { type: actionType, payload: {}}
         const {userId} = data.plan
         const nextId = UuidUtil.getUUID()
 
